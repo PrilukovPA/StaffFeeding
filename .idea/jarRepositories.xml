@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="24e36293-3cca-4479-b66f-8d43b3d5c758" />
+      <option name="name" value="24e36293-3cca-4479-b66f-8d43b3d5c758" />
+      <option name="url" value="https://mvnrepository.com/artifact/com.oracle/ojdbc14" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="6d210d60-ee69-4cca-afb3-e7a4ff2d4eac" />
+      <option name="name" value="6d210d60-ee69-4cca-afb3-e7a4ff2d4eac" />
+      <option name="url" value="http://www.datanucleus.org/downloads/maven2/" />
+    </remote-repository>
+  </component>
+</project>
