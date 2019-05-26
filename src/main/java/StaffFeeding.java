@@ -2,6 +2,9 @@ import org.apache.camel.main.Main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Реализует управление активацией вет. врачей по программе Хиллс Стафф Фидинг.
+ */
 class StaffFeeding {
 
     private static final Logger log = LoggerFactory.getLogger("ru.evenx.logback");

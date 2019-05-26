@@ -3,7 +3,10 @@ import entities.ClientActivator;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
-class SplitProcessor implements Processor {
+/**
+ * Превращает объект клиента в объект для передачи сервису активации
+ */
+class TransformPocessor implements Processor {
 
     @Override
     public void process(Exchange exchange) {

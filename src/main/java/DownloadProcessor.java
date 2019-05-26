@@ -5,6 +5,9 @@ import org.hibernate.Session;
 
 import java.util.stream.Stream;
 
+/**
+ * Загрузка клиентов в базу
+ */
 class DownloadProcessor implements Processor {
 
     public void process(Exchange exchange) {

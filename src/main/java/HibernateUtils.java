@@ -3,6 +3,10 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+/**
+ * Взято из документации по первичной настройке Hibernate
+ * https://docs.jboss.org/hibernate/orm/5.0/topical/html/bootstrap/NativeBootstrapping.html#_sessionfactoryobserver
+ */
 class HibernateUtils {
     private static SessionFactory sessionFactory;
 

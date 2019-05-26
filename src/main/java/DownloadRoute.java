@@ -4,6 +4,9 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
 
+/**
+ * Загрузка клиентов из сервиса в базу. Отправка письма разработчику в случае ошибки.
+ */
 class DownloadRoute extends RouteBuilder {
 
     public void configure() {

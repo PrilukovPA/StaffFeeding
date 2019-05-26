@@ -3,6 +3,9 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
 
+/**
+ * Выгрузка данных об активных клиентах на сервис
+ */
 class UnloadRoute extends RouteBuilder {
     @Override
     public void configure() {
@@ -16,7 +19,7 @@ class UnloadRoute extends RouteBuilder {
         from("timer://runOnce?fixedRate=true&repeatCount=-1&delay=0&period=600000")
                 .process(new UnloadProcessor())
                 .split(body())
-                .process(new SplitProcessor())
+                .process(new TransformPocessor())
                 .marshal().json(JsonLibrary.Jackson)
                 .setHeader(Exchange.HTTP_METHOD, simple("PATCH"))
                 .setHeader("Content-Type", simple("application/json"))

@@ -5,6 +5,9 @@ import org.hibernate.Session;
 
 import java.util.List;
 
+/**
+ * Выгрузка клиентов из базы в виде списка
+ */
 class UnloadProcessor implements Processor {
 
     @Override
