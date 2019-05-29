@@ -15,11 +15,14 @@ class StaffFeeding {
     }
 
     private void run() {
+        System.out.println("begin main");
         Main main = new Main();
         main.addRouteBuilder(new DownloadRoute());
         main.addRouteBuilder(new UnloadRoute());
         try {
+            System.out.println("begin main run");
             main.run();
+            System.out.println("end begin main");
         } catch (Exception e) {
             e.printStackTrace();
         }

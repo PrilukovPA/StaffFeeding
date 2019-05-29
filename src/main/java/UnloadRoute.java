@@ -23,7 +23,7 @@ class UnloadRoute extends RouteBuilder {
                 .marshal().json(JsonLibrary.Jackson)
                 .setHeader(Exchange.HTTP_METHOD, simple("PATCH"))
                 .setHeader("Content-Type", simple("application/json"))
-                .setHeader("Authorization", simple("Token eb6bec562e9197b4f57c5a2be84ca48492a08a861")) // Северный
+                .setHeader("Authorization", simple("Token eb6bec562e9197b4f57c5a2be84ca48492a08a86")) // Северный
                 .toD("jetty:https://planetahills.ru/distributors_api/v3/users/${headers.clientId}/");
     }
 }

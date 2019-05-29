@@ -20,7 +20,7 @@ class DownloadRoute extends RouteBuilder {
         from("timer://runOnce?fixedRate=true&repeatCount=-1&delay=0&period=600000")
                 .setHeader(Exchange.HTTP_METHOD, simple("GET"))
                 .setHeader("Content-Type", simple("application/json"))
-                .setHeader("Authorization", simple("Token eb6bec562e9197b4f57c5a2be84ca48492a08a861")) // Северный
+                .setHeader("Authorization", simple("Token eb6bec562e9197b4f57c5a2be84ca48492a08a86")) // Северный
                 .to("jetty:https://planetahills.ru/distributors_api/v3/users/")
                 .unmarshal().json(JsonLibrary.Jackson, Client[].class)
                 .process(new DownloadProcessor());
