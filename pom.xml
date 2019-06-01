@@ -12,12 +12,76 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <configuration>
                     <source>8</source>
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.4</version>
+            </plugin>
+            <!--Копирование зависимотей из репозитория в папку lib/-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+                <configuration>
+                    <!--Все зависимости, которые нужны для работы приложения, будут лежать здесь-->
+                    <outputDirectory>${project.build.directory}/lib/</outputDirectory>
+                    <overWriteReleases>true</overWriteReleases>
+                    <overWriteSnapshots>true</overWriteSnapshots>
+                    <overWriteIfNewer>true</overWriteIfNewer>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--Построение манифеста с прописыванием Classpath, чтобы jar-ник видел зависимости-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <!--Если надо конфигурировать манифест, то здесь-->
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <!--путь к зависимостям относительно запускаемого jar файла-->
+                            <!--ВСЕ ЗАВИСИМОСТИ ДОЛЖНЫ БУДУТ ПОСТАВЛЯТЬСЯ С jar-приложением. -->
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <!-- <classpathLayoutType>simple</classpathLayoutType> -->
+                            <mainClass>StaffFeeding</mainClass>
+                        </manifest>
+                        <!--Отдельная запись в classpath манифеста-->
+                        <!--
+                        <manifestEntries>
+                            <Rsrc-Class-Path>lib/logging.properties</Rsrc-Class-Path>
+                        </manifestEntries>
+                         -->
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include> **/*.properties</include>
+                    <include> **/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+
     </build>
 
     <repositories>
