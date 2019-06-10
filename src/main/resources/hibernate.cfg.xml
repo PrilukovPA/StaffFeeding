@@ -2,9 +2,9 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-        <property name="hibernate.connection.url">jdbc:oracle:thin:@172.17.100.217:1521:EVSURG</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@192.168.1.220:1521:CSALES</property>
         <property name="hibernate.connection.username">evad</property>
-        <property name="hibernate.connection.password">sever007</property>
+        <property name="hibernate.connection.password">evenx007</property>
         <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
         <property name="hibernate.default_schema">EVAD</property>
         <property name="show_sql">true</property>

@@ -15,12 +15,12 @@ class DownloadRoute extends RouteBuilder {
                 .handled(true)
                 .log(LoggingLevel.ERROR, "${exception.message}")
                 .transform().simple("${exception.message}")
-                .to("smtp://smtp.evenx.ru:25?from=support-p@evenx.ru&to=PrilukovPA@evenx.ru&subject=DOWNLOAD");
+                .to("smtp://smtp.city-sales.ru:25?password=#log16ax&username=aliluev@city-sales.ru?from=aliluev@city-sales.ru&to=PrilukovPA@evenx.ru&subject=DOWNLOAD");
 
         from("timer://runOnce?fixedRate=true&repeatCount=-1&delay=0&period=600000")
                 .setHeader(Exchange.HTTP_METHOD, simple("GET"))
                 .setHeader("Content-Type", simple("application/json"))
-                .setHeader("Authorization", simple("Token eb6bec562e9197b4f57c5a2be84ca48492a08a86")) // Северный
+                .setHeader("Authorization", simple("Token e760626877de220b5e270ee612643c1e1f18bf82")) // Самара
                 .to("jetty:https://planetahills.ru/distributors_api/v3/users/")
                 .unmarshal().json(JsonLibrary.Jackson, Client[].class)
                 .process(new DownloadProcessor());
