@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+	<db url="jdbc:oracle:thin:@172.17.100.217:1521:EVSURG" username="evad" password="sever007" />	
+	<gateway url="https://planetahills.ru/" key="eb6bec562e9197b4f57c5a2be84ca48492a08a86" />			
+	<logmail user="support-p@evenx.ru" pass="" host="smtp.evenx.ru" port="25" from="support-p@evenx.ru" subject="EXCHANGE" auth="" ssl="">
+		<recipient>PrilukovPA@evenx.ru</recipient>		
+	</logmail>	
+</settings>

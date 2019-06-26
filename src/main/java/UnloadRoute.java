@@ -14,7 +14,12 @@ class UnloadRoute extends RouteBuilder {
                 .handled(true)
                 .log(LoggingLevel.ERROR, "${exception.message}")
                 .transform().simple("${exception.message}")
-                .to("smtp://smtp.city-sales.ru:25?password=#log16ax&username=aliluev@city-sales.ru?from=aliluev@city-sales.ru&to=PrilukovPA@evenx.ru&subject=DOWNLOAD");
+                .to("smtp://" + StaffFeeding.settings.logmail.host + ":" + StaffFeeding.settings.logmail.port +
+                        "?password=" + StaffFeeding.settings.logmail.pass +
+                        "&username=" + StaffFeeding.settings.logmail.user +
+                        "&from=" + StaffFeeding.settings.logmail.from +
+                        "&to=" + StaffFeeding.settings.logmail.recipients.get(0) +
+                        "&subject=" + StaffFeeding.settings.logmail.subject);
 
         from("timer://runOnce?fixedRate=true&repeatCount=-1&delay=0&period=600000")
                 .process(new UnloadProcessor())
@@ -23,7 +28,7 @@ class UnloadRoute extends RouteBuilder {
                 .marshal().json(JsonLibrary.Jackson)
                 .setHeader(Exchange.HTTP_METHOD, simple("PATCH"))
                 .setHeader("Content-Type", simple("application/json"))
-                .setHeader("Authorization", simple("Token e760626877de220b5e270ee612643c1e1f18bf82")) // Самара
-                .toD("jetty:https://planetahills.ru/distributors_api/v3/users/${headers.clientId}/");
+                .setHeader("Authorization", simple("Token " + StaffFeeding.settings.gateway.key))
+                .toD("jetty:" + StaffFeeding.settings.gateway.url + "distributors_api/v3/users/${headers.clientId}/");
     }
 }
